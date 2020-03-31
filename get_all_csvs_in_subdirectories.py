@@ -1,5 +1,8 @@
 import os
 import os.path
+import pandas as pd
+
+output_path = "output"
 
 files = []
 for dirpath, dirnames, filenames in os.walk("."):
@@ -9,7 +12,7 @@ for dirpath, dirnames, filenames in os.walk("."):
 frames = []
 names = []
 try:
-    os.mkdir("output")
+    os.mkdir(output_path)
 except:
     print("file exists")
 
@@ -17,7 +20,7 @@ for i in files:
     name =i.split("/")[-1]
     names.append(name)
     df = pd.read_csv(i)
-    df.to_csv("output//"+name)
+    df.to_csv(output_path+"//"+name)
     frames.append(df)
 
 n = 0
@@ -38,3 +41,4 @@ data = {'length':lens, 'filename':name_list}
 # Create DataFrame 
 df = pd.DataFrame(data) 
 df = df.sort_values(by="length",ascending=False)
+df.to_csv(output_path+"metadata_file.csv")
