@@ -19,3 +19,8 @@ for i in files:
     df = pd.read_csv(i)
     df.to_csv("output//"+name)
     frames.append(df)
+
+n = 0
+for i in names:
+    print(n,i)
+    n+=1
