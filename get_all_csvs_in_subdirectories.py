@@ -24,3 +24,17 @@ n = 0
 for i in names:
     print(n,i)
     n+=1
+
+name_list = []
+lens = []
+space = " "
+for i in range(len(names)):
+    lens.append(len(frames[i]))
+    name_list.append(names[i])
+    
+# intialise data of lists. 
+data = {'length':lens, 'filename':name_list} 
+  
+# Create DataFrame 
+df = pd.DataFrame(data) 
+df = df.sort_values(by="length",ascending=False)
