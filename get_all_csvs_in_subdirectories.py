@@ -5,9 +5,9 @@ files = []
 for dirpath, dirnames, filenames in os.walk("."):
     for filename in [f for f in filenames if f.endswith(".csv")]:
         files.append(os.path.join(dirpath, filename))
-        
-frames = []
 
+frames = []
+names = []
 try:
     os.mkdir("output")
 except:
@@ -15,6 +15,7 @@ except:
 
 for i in files:
     name =i.split("/")[-1]
+    names.append(name)
     df = pd.read_csv(i)
     df.to_csv("output//"+name)
     frames.append(df)
