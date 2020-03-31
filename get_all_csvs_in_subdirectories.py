@@ -42,3 +42,17 @@ data = {'length':lens, 'filename':name_list}
 df = pd.DataFrame(data) 
 df = df.sort_values(by="length",ascending=False)
 df.to_csv(output_path+"metadata_file.csv")
+
+from IPython.display import display_html
+def display_side_by_side(*args):
+    html_str=''
+    for df in args:
+        html_str+=df.to_html()
+    display_html(html_str.replace('table','table style="display:inline"'),raw=True)
+
+display_side_by_side(frames[df.index[0]],
+                     frames[df.index[1]],
+                     frames[df.index[2]],
+                     frames[df.index[3]],
+                     frames[df.index[4]],
+                    )
