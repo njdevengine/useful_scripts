@@ -8,6 +8,13 @@ for dirpath, dirnames, filenames in os.walk("."):
         
 frames = []
 
+try:
+    os.mkdir("output")
+except:
+    print("file exists")
+
 for i in files:
+    name =i.split("/")[-1]
     df = pd.read_csv(i)
+    df.to_csv("output//"+name)
     frames.append(df)
